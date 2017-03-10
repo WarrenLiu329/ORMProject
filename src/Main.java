@@ -10,6 +10,11 @@ public class Main {
 		System.out.println("Welcome!  I will now auto-score your pdf!");
 		System.out.println("Loading file..." + PDF_PATH);
 		ArrayList<PImage> images = PDFHelper.getPImagesFromPdf(PDF_PATH);
+		
+//		for (int i = 0; i < images.size(); i++){
+//			PImage image = images.get(i);
+//			System.out.println("imageLength: " + image.width + "imageHeight: " + image.height);
+//		}
 
 		System.out.println("Scoring all pages...");
 		scoreAllPages(images);
@@ -36,8 +41,12 @@ public class Main {
 			PImage image = images.get(i);
 
 			AnswerSheet answers = markReader.processPageImage(image);
+			
+			answers.displayAnswers();
 
 			// do something with answers
 		}
+		
+
 	}
 }

@@ -31,11 +31,39 @@ public class VisualTester extends PApplet {
 		background(255);
 		if (images.size() > 0) {
 			current_image = images.get(currentImageIndex);
-			image(current_image, 0, 0);			// display image i
+			image(current_image, 0, 0); // display image i
+			textSize(50);
+			int myColor = color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+			fill(0);
+		//	rect(3, 259, 40, 40);
+			text(mouseX + " " + mouseY, 30, 30);
+			noFill();
+			
+			stroke(0);
+			strokeWeight(2);
+			int width = 200;
+			int height = 37;
+			int topCornerX = 114;
+			int topCornerY = 462;
+			int xIncrement = width + 83;
+			int section = width / 5;
+			for (int i = 0; i < 4; i++) {
+				for (int j = 0; j < 12; j++) {
+					int rectY = topCornerY + (j * height);
+					rect(topCornerX + (xIncrement * i), rectY, width, height);
+					for (int s = 1; s < 5; s++) {
+						line(topCornerX + (section * s) + (xIncrement * i), rectY,
+								topCornerX + (section * s) + (xIncrement * i), rectY + height);
+					}
+				}
+			}
+
 		}
 	}
 
 	public void mouseReleased() {
-		currentImageIndex = (currentImageIndex + 1) % images.size();			// increment current image
+		currentImageIndex = (currentImageIndex + 1) % images.size(); // increment
+																		// current
+																		// image
 	}
 }
