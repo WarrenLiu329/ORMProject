@@ -41,22 +41,23 @@ public class VisualTester extends PApplet {
 
 			stroke(0);
 			strokeWeight(2);
-			// int width = 200;
-			// int height = 37;
-			// int topCornerX = 114;
-			// int topCornerY = 462;
-			// int xIncrement = width + 83;
-			// int section = width / 5;
-			// for (int i = 0; i < 4; i++) {
-			// for (int j = 0; j < 12; j++) {
-			// int rectY = topCornerY + (j * height);
-			// rect(topCornerX + (xIncrement * i), rectY, width, height);
-			// for (int s = 1; s < 5; s++) {
-			// line(topCornerX + (section * s) + (xIncrement * i), rectY,
-			// topCornerX + (section * s) + (xIncrement * i), rectY + height);
-			// }
-			// }
-			// }
+			int width = 200;
+			int height = 37;
+			int topCornerX = 114;
+			int topCornerY = 462;
+			int xIncrement = width + 83;
+			int section = width / 5;
+			for (int i = 0; i < 4; i++) {
+				for (int j = 0; j < 12; j++) {
+					int rectY = topCornerY + (j * height);
+					rect(topCornerX + (xIncrement * i), rectY, width, height);
+					for (int s = 1; s < 5; s++) {
+						line(topCornerX + (section * s) + (xIncrement * i), rectY,
+								topCornerX + (section * s) + (xIncrement * i), rectY + height);
+					}
+				}
+			}
+
 			int color = OpticalMarkReader.getPixelAt(mouseX, mouseY, current_image);
 			text(color, mouseX, mouseY + 40);
 		}

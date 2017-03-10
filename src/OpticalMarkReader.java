@@ -28,21 +28,23 @@ public class OpticalMarkReader {
 		int bubbleWidth = 200 / numBubbles;
 		int bubbleHeight = 37;
 		int distBetweenCol = 83;
-
 		int row = 0;
 		int col = 0;
+		System.out.println("width: " + image.width + " height: " + image.height);
 		String[][] answers = new String[7][100];
 		for (int j = start.getY(); j < image.width; j += bubbleWidth + distBetweenCol) {
+			int count = 0;
 			for (int i = start.getX(); i < image.height; i += bubbleHeight) {
-				// System.out.println("(" + i + ", "+ j + ")");
+				System.out.println( count+"(" + i + ", "+ j + ")");
+				count++;
 				int bubbleIndex = determineBubble(i, j, bubbleWidth, bubbleHeight, numBubbles, pixels);
-				System.out.println("row: " + row + " col: " + col);
-				System.out.println("i: " + i + " j: " + j);
 				answers[row][col] = determineAnswer(bubbleIndex);
-				System.out.println(answers[row][col]);
 				col++;
+				//System.out.println("row: "+ row + " col: "+col);
 			}
+			System.out.println("hi");
 			row++;
+	
 		}
 		return null;
 	}
